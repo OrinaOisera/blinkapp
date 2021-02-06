@@ -7,7 +7,7 @@ from users.models import  Account
 
 class TestModels(TestCase):
      def setUp(self) :
-         self.subject = Subject.objects.create(title='Programmig news')
+         self.subject = Subject.objects.create(title='Programming news')
          self.owner = Account.objects.create(email= 'teast@gmail.com',
                                  password= 'test',
                                  fullname= 'Test')
@@ -21,3 +21,10 @@ class TestModels(TestCase):
         course = self.course
         self.assertTrue(isinstance( course, Course))
         self.assertEqual(course.slug ,  'books')
+
+     def test_subject_creation(self):
+         subject = self.subject
+         self.assertTrue(isinstance(subject, Subject))
+         self.assertIsInstance(self.subject.title, str)
+         self.assertEqual( subject.slug, 'programming-news')
+
